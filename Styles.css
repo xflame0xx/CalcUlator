@@ -1,246 +1,97 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+/* style.css */
 
 body {
-    background:
-            linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-            url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2072&q=80') center/cover fixed;
-    color: #e6e6ff;
-    min-height: 100vh;
+    margin: 0;
+    padding: 0;
     display: flex;
+    justify-content: center;
     align-items: center;
-    justify-content: center;
-    font-family: 'Courier New', monospace;
-    padding: 20px;
+    min-height: 100vh;
+    background-image: url('Public/assets/img_1.png'); /* Убедись, что путь правильный */
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    font-family: Arial, sans-serif;
 }
 
-.calc-container {
-    background: rgba(30, 30, 46, 0.95);
-    border-radius: 30px;
-    padding: 40px 35px;
-    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.8);
-    border: 3px solid #4cc9f0;
-    max-width: 450px;
-    width: 100%;
-    backdrop-filter: blur(10px);
-}
-
-.screen {
-    background: #0d1b2a;
-    border-radius: 20px;
-    padding: 35px 30px;
-    margin-bottom: 35px;
-    text-align: right;
-    border: 3px solid #415a77;
-    position: relative;
-    overflow: hidden;
-    min-height: 140px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.screen::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 4px;
-    background: linear-gradient(90deg, #4cc9f0, #7209b7, #f72585);
+.calculator {
+    background-color: #222;
+    padding: 30px; /* Увеличили отступы */
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+    width: 450px; /* Увеличили ширину с 300px до 450px */
 }
 
 #display {
-    font-size: 3.2em;
-    font-weight: 600;
-    color: #90e0ef;
-    text-shadow: 0 0 12px rgba(144, 224, 239, 0.5);
-    letter-spacing: 1.5px;
-    line-height: 1.2;
-    word-wrap: break-word;
-    word-break: break-all;
+    width: calc(100% - 10px);
+    height: 80px; /* Увеличили высоту с 60px до 80px */
+    margin-bottom: 20px; /* Увеличили отступ */
+    padding: 15px; /* Увеличили внутренние отступы */
+    font-size: 2.5em; /* Увеличили шрифт */
+    text-align: right;
+    border: none;
+    background-color: #333;
+    color: white;
+    border-radius: 8px;
+    box-sizing: border-box;
 }
 
-.controls {
+.buttons {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 18px;
-    margin-top: 20px;
+    grid-gap: 15px; /* Увеличили отступы между кнопками */
 }
 
-.key {
-    height: 85px;
+/* Общие стили для кнопок */
+button {
+    height: 80px; /* Увеличили высоту с 60px до 80px */
+    font-size: 1.5em; /* Увеличили шрифт */
     border: none;
-    border-radius: 20px;
-    font-size: 1.6em;
-    font-weight: 700;
+    border-radius: 8px;
     cursor: pointer;
-    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-    background: #1b263b;
-    color: #caf0f8;
-    border: 2px solid #415a77;
-    position: relative;
-    overflow: hidden;
-}
-
-.key::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
-    transition: left 0.6s;
-}
-
-.key:hover::before {
-    left: 100%;
-}
-
-.key:hover {
-    transform: translateY(-4px) scale(1.08);
-    box-shadow: 0 12px 25px rgba(76, 201, 240, 0.4);
-    background: #2a3c5a;
-}
-
-.key:active {
-    transform: translateY(-1px) scale(1.02);
-}
-
-.digit {
-    background: #22223b;
-    border-color: #4a4e69;
-}
-
-.digit:hover {
-    background: #3a3e5b;
-}
-
-.action {
-    background: #3a0ca3;
-    color: #f1faee;
-    border-color: #4361ee;
-}
-
-.action:hover {
-    background: #480ca8;
-}
-
-.execute {
-    background: linear-gradient(135deg, #f72585, #b5179e);
+    background-color: #555;
     color: white;
+    transition: background-color 0.2s;
+}
+
+button:hover {
+    background-color: #666;
+}
+
+button:active {
+    background-color: #444;
+    transform: scale(0.98);
+}
+
+/* Специальные стили для кнопки "равно" */
+.equals {
+    grid-row: span 2;
+    background-color: #ff9500;
+}
+
+.equals:hover {
+    background-color: #ffad33;
+}
+
+.equals:active {
+    background-color: #cc7800;
+}
+
+/* Специальные стили для кнопки "ноль" */
+.zero {
     grid-column: span 2;
-    border: none;
-    font-size: 1.8em;
+    background-color: #444;
 }
 
-.execute:hover {
-    background: linear-gradient(135deg, #ff2d95, #c218a8);
-    box-shadow: 0 12px 30px rgba(247, 37, 133, 0.5);
+/* Стили для кнопок операторов (опционально) */
+.operator {
+    background-color: #d49200;
 }
 
-.reset {
-    background: #d00000;
-    color: white;
-    border: none;
-    font-size: 1.7em;
+.operator:hover {
+    background-color: #e6ad1a;
 }
 
-.reset:hover {
-    background: #dc2f02;
-    box-shadow: 0 12px 25px rgba(220, 47, 2, 0.4);
-}
-
-.credits {
-    margin-top: 40px;
-    text-align: center;
-    color: #8d99ae;
-    font-size: 1em;
-    padding: 20px;
-    border-top: 2px solid #415a77;
-    font-weight: 600;
-}
-
-.status-bar {
-    font-size: 0.9em;
-    color: #ff9e00;
-    text-align: left;
-    margin-bottom: 12px;
-    min-height: 22px;
-    font-weight: 600;
-    text-shadow: 0 0 8px rgba(255, 158, 0, 0.3);
-}
-
-.memory-functions {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
-    margin-bottom: 20px;
-}
-
-.memory-btn {
-    height: 50px;
-    border: none;
-    border-radius: 12px;
-    font-size: 1em;
-    font-weight: 600;
-    cursor: pointer;
-    background: #5a189a;
-    color: white;
-    border: 2px solid #7b2cbf;
-    transition: all 0.2s ease;
-}
-
-.memory-btn:hover {
-    background: #7b2cbf;
-    transform: translateY(-2px);
-}
-
-@media (max-width: 500px) {
-    .calc-container {
-        padding: 30px 25px;
-        max-width: 400px;
-    }
-
-    #display {
-        font-size: 2.8em;
-    }
-
-    .key {
-        height: 75px;
-        font-size: 1.4em;
-    }
-
-    .controls {
-        gap: 15px;
-    }
-}
-
-@media (max-width: 400px) {
-    body {
-        padding: 15px;
-    }
-
-    .calc-container {
-        padding: 25px 20px;
-        max-width: 350px;
-    }
-
-    #display {
-        font-size: 2.4em;
-    }
-
-    .key {
-        height: 70px;
-        font-size: 1.3em;
-    }
-
-    .screen {
-        padding: 25px 20px;
-        min-height: 120px;
-    }
+.operator:active {
+    background-color: #b37a00;
 }
