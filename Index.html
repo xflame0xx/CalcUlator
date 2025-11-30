@@ -3,40 +3,97 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Калькулятор (TypeScript)</title>
+    <title>Калькулятор (TypeScript) — ЛР</title>
     <link rel="stylesheet" href="/Styles.css" />
 </head>
 <body>
-<div class="calculator">
-    <input type="text" id="display" readonly />
-    <div class="buttons">
-        <button onclick="window.clearDisplay()">C</button>
-        <button onclick="window.appendToDisplay('(')">(</button>
-        <button onclick="window.appendToDisplay(')')">)</button>
-        <button onclick="window.appendToDisplay('/')" class="operator">/</button>
+<div class="calculator-container">
 
-        <button onclick="window.appendToDisplay('7')">7</button>
-        <button onclick="window.appendToDisplay('8')">8</button>
-        <button onclick="window.appendToDisplay('9')">9</button>
-        <button onclick="window.appendToDisplay('*')" class="operator">*</button>
+    <div class="calculator">
+        <input type="text" id="display" readonly />
+        <div class="buttons">
+            <!-- Ряд 1 -->
+            <button onclick="window.clearDisplay()" class="operator">C</button>
+            <button onclick="window.backspace()" class="operator">⌫</button>
+            <button onclick="window.toggleSign()" class="operator">+/-</button>
+            <button onclick="window.percentage()" class="operator">%</button>
 
-        <button onclick="window.appendToDisplay('4')">4</button>
-        <button onclick="window.appendToDisplay('5')">5</button>
-        <button onclick="window.appendToDisplay('6')">6</button>
-        <button onclick="window.appendToDisplay('-')" class="operator">-</button>
+            <!-- Ряд 2 -->
+            <button onclick="window.sqrt()">√</button>
+            <button onclick="window.square()">x²</button>
+            <button onclick="window.factorial()">x!</button>
+            <button onclick="window.appendToDisplay('/')" class="operator">/</button>
 
-        <button onclick="window.appendToDisplay('1')">1</button>
-        <button onclick="window.appendToDisplay('2')">2</button>
-        <button onclick="window.appendToDisplay('3')">3</button>
-        <button onclick="window.appendToDisplay('+')" class="operator">+</button>
+            <!-- Ряд 3 -->
+            <button onclick="window.appendToDisplay('7')">7</button>
+            <button onclick="window.appendToDisplay('8')">8</button>
+            <button onclick="window.appendToDisplay('9')">9</button>
+            <button onclick="window.appendToDisplay('*')" class="operator">*</button>
 
-        <button class="zero" onclick="window.appendToDisplay('0')">0</button>
-        <button onclick="window.appendToDisplay('.')">.</button>
-        <button class="equals" onclick="window.calculate()">=</button>
+            <!-- Ряд 4 -->
+            <button onclick="window.appendToDisplay('4')">4</button>
+            <button onclick="window.appendToDisplay('5')">5</button>
+            <button onclick="window.appendToDisplay('6')">6</button>
+            <button onclick="window.appendToDisplay('-')" class="operator">-</button>
+
+            <!-- Ряд 5 -->
+            <button onclick="window.appendToDisplay('1')">1</button>
+            <button onclick="window.appendToDisplay('2')">2</button>
+            <button onclick="window.appendToDisplay('3')">3</button>
+            <button onclick="window.appendToDisplay('+')" class="operator">+</button>
+
+            <!-- Ряд 6 -->
+            <button class="zero" onclick="window.addTripleZero()">000</button>
+            <button onclick="window.appendToDisplay('0')">0</button>
+            <button onclick="window.appendToDisplay('.')">.</button>
+            <button class="equals" onclick="window.calculate()">=</button>
+        </div>
+
     </div>
+
+
+    <div class="lab-objective">
+        Цель лабораторной работы: <mark>знакомство</mark> с основами <mark>HTML</mark> и <mark>CSS</mark>.
+    </div>
+
+
+    <details class="author-details">
+        <summary>Автор</summary>
+        <p>ФИО: Сныткин И.А<br />Группа: ИС-23</p>
+    </details>
+
+
+    <div class="theme-controls">
+        <select id="bg-select">
+            <option value="img_2.png">Фон 1</option>
+            <option value="img_1.png">Фон 2</option>
+        </select>
+        <button id="toggle-theme">Сменить фон</button>
+    </div>
+
+    <!-- Ссылка на GitHub -->
+    <div class="github-link">
+        <a href="https://github.com/xflame0xx" target="_blank">GitHub</a>
+    </div>
+
+
+    <div class="footer-note">Сныткин И.А</div>
 </div>
 
-<!-- Подключаем TypeScript как модуль -->
+
 <script type="module" src="/bobo.ts"></script>
+
+
+<script>
+    document.getElementById('toggle-theme')?.addEventListener('click', () => {
+        const select = document.getElementById('bg-select');
+        if (select) {
+            const selected = select.value;
+            document.body.style.backgroundImage = `url('Public/assets/${selected}')`;
+            // Отключаем сплошной фон, если используется изображение
+            document.body.style.backgroundColor = '';
+        }
+    });
+</script>
 </body>
 </html>
