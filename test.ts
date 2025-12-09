@@ -1,5 +1,5 @@
 type Art = {
-    id: string;
+    id: number[];
     title: string;
     body: string;
     tags: string[];
@@ -20,7 +20,7 @@ function createPreview(T: Art): ArtPrev {
 
 // 🧪 Пример использования
 const fullArticle: Art = {
-    id: "123",
+    id: [123],
     title: "Generics in TypeScript",
     body: "Generics allow you to write reusable, type-safe components...",
     tags: ["typescript", "generics", "development"],
@@ -32,3 +32,4 @@ const preview = createPreview(fullArticle)
 console.log(preview.id);
 console.log(preview.title);
 console.log(preview.tags);
+
